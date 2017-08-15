@@ -1,0 +1,11 @@
+Andi workflow
+#parse fasta sequences greater than x length e.g. below where x = 500
+/home/raju.misra/programs/bioawk/bioawk -c fastx '(length($seq) > 500){ print ">"$name"\n"$seq }' contigs.fasta > contigsgrt500.fasta
+
+ #andi assembled genome comparison workflow
+#running andi - using QMU staphs and 99 genbank staphs (complete or scaffolded)
+andi -jv -t 12 *.fna /srv/data0/raju/SA_QMU/andi/QM_Staphys/Genomes_staphy/aureus/*.fna /srv/data0/raju/SA_QMU/andi/QM_Staphys/Genomes_staphy/epidermidis/*.fna /srv/data0/raju/SA_QMU/andi/QM_Staphys/Genomes_staphy/hominis/*.fna /srv/data0/raju/SA_QMU/andi/QM_Staphys/Genomes_staphy/pettenkoferi/*.fna /srv/data0/raju/SA_QMU/andi/QM_Staphys/Genomes_staphy/saprophyticus/*.fna /srv/data0/raju/SA_QMU/andi/QM_Staphys/Genomes_staphy/sciuri/*.fna > /srv/data0/raju/SA_QMU/andi/QM_Staphys/output/staphy_andi1.mat
+                
+#in phylip
+neighbour --> follow instructions using *.mat file as input (accept defaults) -- this create a neighbour join tree for the genomes.
+retree --> follow instructions using outtree as input (accept defaults)

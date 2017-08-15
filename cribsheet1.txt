@@ -1,0 +1,39 @@
+Crib sheet:
+if and statement excel.. to do 2 variable searches
+
+=IF(AND(A2>1421858,A2<1423249),"Yes","")
+
+String count in excel, for a range:
+
+=COUNTIF(G1:G69,"Yes")
+
+To find and print every nth line of a file
+sed -n '0~4p' somefile
+line 4
+line 8
+$
+0~4 means select every 4th line, beginning at line 0. 
+Line 0 has nothing, so the first printed line is line 4.
+-n means only explicitly printed lines are included in output.
+
+
+Soooooo example for cat and farahs data visulisation:
+using the bam files:
+samtools depth -q <input.bam> > <output_depthx.txt>
+Then to print out every 1000th line (see example above)
+sed -n '0~1000p' <output_depthx.txt> > <output_depthx_every1000thline.txt>
+
+To count number of entries in a list per string.  But print the search string once e.g.
+File name is db_id.txt containing the list:
+
+apple
+apple
+pear
+
+sort db_id.txt | uniq -c > dbid_count.txt
+
+output filename is:
+dbid_count.txt
+File content:
+2 apple
+1 pear

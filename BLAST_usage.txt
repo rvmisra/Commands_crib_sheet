@@ -1,0 +1,42 @@
+===============================================================================================
+ncbi-blast-2.2.24+ blast usage
+===============================================================================================
+
+General make protein database
+./makeblastdb -in /home/Raju/Blast/DB/NCBI_nr/nr_081010.fasta -out /home/Raju/Blast/DB/NCBI_nr/nr_081010 -dbtype prot
+
+General make nucleotide database
+./makeblastdb -in /home/Raju/Blast/DB/16s_type_strains/Genera_type_strains_ALL_bacteria_rdp.fasta -out /home/Raju/Blast/DB/16s_type_strains/Genera_type_strains_ALL_bacteria_rdp.fasta -dbtype nucl
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+General usage, tab output
+./blastp -query /home/Raju/Blast/input/AV/AV_list_fasta.fasta -db /home/Raju/Blast/DB/NCBI_nr/nr_081010 -outfmt 6 -num_threads 40 -matrix PAM30 -evalue 500000 -out /home/Raju/Blast/DB/NCBI_nr/OUTTEST1.txt
+
+Adjusted for short sequences:
+./blastp -query -db -outfmt "6 std qlen" -num_threads 40 -evalue 200000 -matrix PAM30 -word_size 2 -gapopen 9 -gapextend 1 -comp_based_stats 0 -out
+
+Adjusted to include query length
+./blastp -query /home/alshahib/Raju/Cdiff_078_animal/query/Cdiff078_animal_prots.fasta -db /home/alshahib/Raju/Cdiff_078_animal/db/630_M120_Q23_STA_cat.fasta -outfmt "6 std qlen" -num_threads 40 -evalue 1e-5 -num_descriptions 20 -num_alignments 20 -out /home/alshahib/Raju/Cdiff_078_animal/output/078hum_cons9090_vs_078animal_cat_e1_5_top20_qlen_atend_BLASTOUTPUT1.txt
+
+./blastp -query -db -outfmt "6 std qlen" -num_threads 40 -evalue 200000 -matrix PAM30 -word_size 2 -gapopen 9 -gapextend 1 -comp_based_stats 0 -out
+Additonal parameters for blast:
+Usage for number of descriptions and alignments to display:
+-num_descriptions 50
+-num_alignments 50
+
+===============================================================================================
+Sort file and print length of all strings in a list
+awk '{ print length(), $0 | "sort -n" }' Pseudo_Againts_new_NCBI_Oct_ALL_NR.fasta > aaa
+
+
+TEMP:
+./blastn -query /home/Raju/Blast/DB/16s_type_strains/DB/Genera_type_strains_ALL_bacteria_rdp_MICROSEQ_region.fasta -db /home/Raju/Blast/DB/16s_type_strains/DB/Genera_type_strains_ALL_bacteria_rdp.fasta -outfmt 6 -num_threads 40 -out /home/Raju/Blast/DB/16s_type_strains/DB/Genera_type_strains_MICROSEQ_vs_Genera_type_all_strains_tab_out_defaults_OUT2.txt
+
+./blastp -query /home/Raju/Ecoli_marker/280_broth_nr.fasta -db /home/Raju/Blast/DB/Enterobacter_280/EnterobacterUniprotNR_280cat.fasta -outfmt "6 std qlen" -num_threads 40 -evalue 200000 -matrix PAM30 -word_size 2 -gapopen 9 -gapextend 1 -comp_based_stats 0 -out /home/Raju/Ecoli_marker/Blast_outs/280_broth_vs_EnterUni280_OUT.txt
+
+./blastp -query /home/Raju/Ecoli_marker/HPA280_reps123_plate_peps_nr.fasta -db /home/Raju/Blast/DB/Enterobacter_280/EnterobacterUniprotNR_280cat.fasta -outfmt "6 std qlen" -num_threads 40 -evalue 200000 -matrix PAM30 -word_size 2 -gapopen 9 -gapextend 1 -comp_based_stats 0 -num_descriptions 50 -num_alignments 50 -ou
+
+
+USEARCH usage for short seqs
+./usearch5.1.221_i86linux32 -derep_fullseq -cluster 280_DI_450_peps.fasta -seedsout 280_DI_450_peps_nr.fasta --w 1 --minlen 5

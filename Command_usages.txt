@@ -1,0 +1,13 @@
+trimmomatic
+java -jar /home/raju.misra/programs/trimmomatic/Trimmomatic-0.33/trimmomatic-0.33.jar PE -threads 12 -phred33 -trimlog trimlog.txt ERR490500_1.fastq.gz ERR490500_2.fastq.gz ERR490500_1_pe.fastq ERR490500_1_se.fastq ERR490500_2_pe.fastq ERR490500_2_se.fastq ILLUMINACLIP:/home/raju.misra/programs/trimmomatic/Trimmomatic-0.33/adapters/TruSeq3-PE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:20 MINLEN:36
+
+
+velvet_optimiser usage (optimised for n50)
+./VelvetOptimiser.pl -s 59 -e 119 -f '-fastq -shortPaired -separate /mnt/data123/data1/temp/HTS_test/Trim_def_eb1_S6_L001_R1_001.fastq /mnt/data123/data1/temp/HTS_test/Trim_def_eb1_S6_L001_R2_001.fastq' --optFuncKmer 'n50'
+
+
+spades
+spades.py -1 ERR490500_1_pe.fastq -2 ERR490500_2_pe.fastq -o ERR490500_PE_spades
+
+quast (no reference) - better with reference
+quast.py --gene-finding /srv/data0/raju/SA_QMU/fastq/ERR490500_PE_spades/contigs.fasta -o /srv/data0/raju/SA_QMU/fastq/ERR490500_PE_spades_quast -t 12

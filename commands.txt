@@ -1,0 +1,3 @@
+=IF(AND(AG2=1,(ISNUMBER(SEARCH("PROKKA",Y2)))),1,0)
+
+TO check if column AG2 = 1 and column y2 = the substring PROKKA, if yes print 1 if no print 0

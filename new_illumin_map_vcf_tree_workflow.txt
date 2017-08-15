@@ -1,0 +1,55 @@
+/srv/data0/raju/SA_QMU/fastq/primary/mapping_work/ref/EMRSA15_HO50690412.fasta
+/srv/data0/raju/SA_QMU/fastq/primary/mapping_work/ref/SE11_ATCC1228.fasta
+//srv/data0/raju/SA_QMU/fastq/primary/mapping_work
+
+#QC trimming
+java -jar /home/raju.misra/programs/trimmomatic/Trimmomatic-0.33/trimmomatic-0.33.jar PE -threads 12 -phred33 -trimlog trimlog.txt ERR490500_1.fastq.gz ERR490500_2.fastq.gz ERR490500_1_pe.fastq ERR490500_1_se.fastq ERR490500_2_pe.fastq ERR490500_2_se.fastq ILLUMINACLIP:/home/raju.misra/programs/trimmomatic/Trimmomatic-0.33/adapters/TruSeq3-PE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:20 MINLEN:36
+
+#Create ref dbs for workflow
+1) create dictionary
+java -jar /usr/local/src/picard-tools-1.119/CreateSequenceDictionary.jar R= /srv/data0/raju/SA_QMU/fastq/primary/mapping_work/ref/EMRSA15_HO50690412.fasta O= /srv/data0/raju/SA_QMU/fastq/primary/mapping_work/ref/EMRSA15_HO50690412.dict
+2) create index
+samtools faidx /srv/data0/raju/SA_QMU/fastq/primary/mapping_work/ref/EMRSA15_HO50690412.fasta
+3) create bwa index
+bwa index /srv/data0/raju/SA_QMU/fastq/primary/mapping_work/ref/EMRSA15_HO50690412.fasta
+#bwa_mapping_sam_out
+bwa mem /srv/data0/raju/SA_QMU/fastq/primary/mapping_work/ref/EMRSA15_HO50690412.fasta ERR387167_1_pe.fastq ERR387167_2_pe.fastq > /srv/data0/raju/SA_QMU/fastq/primary/mapping_work/sam_out/ERR387167_PE.sam -t 12
+
+#picard_sam_to_sortedbam
+java -Xmx14g -jar /usr/local/src/picard-tools-1.119/SortSam.jar SO=coordinate INPUT=ERR387167_PE.sam OUTPUT=ERR387167_PE.bam VALIDATION_STRINGENCY=LENIENT CREATE_INDEX=true
+
+#add readgroups - GATK needs them
+java -jar /usr/local/src/picard-tools-1.119/AddOrReplaceReadGroups.jar SO=coordinate I=/srv/data0/raju/SA_QMU/fastq/primary/mapping_work/sam_out/ERR387167_PE.bam O=/srv/data0/raju/SA_QMU/fastq/primary/mapping_work/sam_out/ERR387167_PERG.bam LB=ERR387167_PE PU=ERR387167_PE SM=ERR387167_PE PL=ILMN VALIDATION_STRINGENCY=LENIENT CREATE_INDEX=true
+
+#marking pcr duplicates
+java -Xmx24g -jar /usr/local/src/picard-tools-1.119/MarkDuplicates.jar INPUT=ERR387167_PERG.bam OUTPUT=ERR387167_PERG.marked.bam METRICS_FILE=metrics CREATE_INDEX=true VALIDATION_STRINGENCY=LENIENT
+
+#local relaignment around indels
+part 1
+java -Xmx24g -jar /usr/local/src/gatk/GenomeAnalysisTK.jar -T RealignerTargetCreator -R /srv/data0/raju/SA_QMU/fastq/primary/mapping_work/ref/EMRSA15_HO50690412.fasta -o ERR387167_PERG.bam.list -I ERR387167_PERG.marked.bam
+
+part 2
+java -Xmx24g -jar /usr/local/src/gatk/GenomeAnalysisTK.jar -I ERR387167_PERG.marked.bam -R /srv/data0/raju/SA_QMU/fastq/primary/mapping_work/ref/EMRSA15_HO50690412.fasta -T IndelRealigner -targetIntervals ERR387167_PERG.bam.list -o ERR387167_PERG.marked.realigned.bam
+
+part 3
+java -jar /usr/local/src/picard-tools-1.119/FixMateInformation.jar INPUT=ERR387167_PERG.marked.realigned.bam OUTPUT=ERR387167_PERG.marked.realigned.fixed.bam SO=coordinate VALIDATION_STRINGENCY=LENIENT CREATE_INDEX=true
+
+#vcf
+#call raw variants - mpileup
+samtools mpileup -ugf /srv/data0/raju/SA_QMU/fastq/primary/mapping_work/ref/EMRSA15_HO50690412.fasta -Q30 -q30 -o40 -e20 -h100 -m2 -F0.002 -I -d250 ERR387167_PERG.marked.realigned.fixed.bam | bcftools call -vmO v -o ERR387167_PERG.marked.realigned.fixed.raw.vcf
+
+#annotate variants
+java -jar /usr/local/src/gatk/GenomeAnalysisTK.jar -T VariantAnnotator -I ERR387167_PERG.marked.realigned.fixed.bam -V ERR387167_PERG.marked.realigned.fixed.raw.vcf -l INFO -R /srv/data0/raju/SA_QMU/fastq/primary/mapping_work/ref/EMRSA15_HO50690412.fasta -o ERR387167_PERG.marked.realigned.fixed.raw.annotated.vcf -U LENIENT_VCF_PROCESSING
+
+#filter variants
+vcfutils.pl varFilter -Q 30 -d 5 -D 20000 -W 12 ERR387167_PERG.marked.realigned.fixed.raw.annotated.vcf > ERR387167_PERG.marked.realigned.fixed.raw.annotated.filtered.vcf
+
+######################################################################################################################
+VCF finder alternative
+#create pileup file
+samtools mpileup -f /srv/data0/raju/SA_QMU/fastq/primary/mapping_work/ref/EMRSA15_HO50690412.fasta ERR387167_PERG.marked.realigned.fixed.bam > ERR387167_PERG.marked.realigned.fixed.mpileup
+#convert samtools pileup to varscan snp file
+java -jar /usr/local/src/VarScanv2_3_9.jar pileup2snp varscan_trial/ERR387167_PERG.marked.realigned.fixed.mpileup > varscan_trial/ERR387167_PERG.marked.realigned.fixed.mpileup.pileup2snp
+#filter
+
+

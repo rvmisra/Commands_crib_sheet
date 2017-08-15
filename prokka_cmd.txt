@@ -1,0 +1,16 @@
+/srv/data0/raju/SA_QMU/168_comps/DB/plasmids/All_complete_NCBI/plasmids_all_ncbi_ed1.fasta
+/srv/data1/raju/dna/contigs/ERR490511_2_prokka/ERR490511_GRT500/PROKKA_RM_10132015_GRT500.fasta
+
+./prokka_rm --outdir /mnt/data123/data1/raju/dna/contigs/ERR490511_2_prokka/ERR490511_GRT500_2_PROKKA --addgenes --genus staph_131015 --strain ERR490531 --gram pos --usegenus --cpus 8 --rfam /mnt/data123/data1/raju/dna/contigs/ERR490511_2_prokka/ERR490511_GRT500/PROKKA_RM_10132015_GRT500.fasta
+
+/mnt/data123/data1/raju/dna/contigs/ERR490511_2_prokka/ERR490511_GRT500_2_PROKKA/PROKKA_RM_11162015.fsa
+
+/home/raju/programs/mauve/mauve_snapshot_2015-02-13/linux-x64/progressiveMauve
+    --output=/mnt/data123/data1/raju/dna/SP_C7_3_ERR490511_comparisons/BRIG/511/mauve_out/511
+    --output-guide-tree=/mnt/data123/data1/raju/dna/SP_C7_3_ERR490511_comparisons/BRIG/511/mauve_out/511.guide_tree
+    --backbone-output=/mnt/data123/data1/raju/dna/SP_C7_3_ERR490511_comparisons/BRIG/511/mauve_out/511.backbone
+    /mnt/data123/data1/raju/dna/SP_C7_3_ERR490511_comparisons/BRIG/511/Spettenkoferi_ERR490511_mauve.gbk
+    /mnt/data123/data1/raju/dna/SP_C7_3_ERR490511_comparisons/BRIG/511/Spettenkoferi_VCU012_Prokka_2_mauve.gbk
+    /mnt/data123/data1/raju/dna/SP_C7_3_ERR490511_comparisons/BRIG/511/NC_002745.gbk
+    /mnt/data123/data1/raju/dna/SP_C7_3_ERR490511_comparisons/BRIG/511/Scapitis_AYP1020_Prokka_mauve.gbk
+    /mnt/data123/data1/raju/dna/SP_C7_3_ERR490511_comparisons/BRIG/511/SXylosus_SMQ_121_Prokka_mauve.gbk

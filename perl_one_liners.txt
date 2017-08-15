@@ -1,0 +1,3 @@
+perl -pe 's/280Contig1/$& . ++$n/ge' PS_prokka_280.fasta > PS_prokka_280_2.fasta
+
+add increment to a matched string

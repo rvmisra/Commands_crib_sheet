@@ -1,0 +1,8 @@
+kraken --db /srv/data0/dbs/kraken/standard_100815 --threads 12 --preload --quick --fastq-input DRR015843_1_10000sampled.fastq --output DRR015843_1_10000sampled_1_kraken_out
+NOTE: DOESNT like fastq.gz
+DRR015843_1_10000sampled_1_kraken_out -> cols 2 &'tab' 3
+cut -f 2-3 DRR015843_1_1_kraken_out > DRR015843_1_1_kraken_out_col2_3.txt
+
+ktImportTaxonomy DRR015843_1_1_kraken_out_col2_3.txt -o DRR015843_1_1_kraken_out_col2_3_kronaout.html
+
+/home/raju.misra/programs/bioawk/bioawk -c fastx '(length($seq) > 500){ print ">"$name"\n"$seq }' scaffolds.fasta > spades_output_ERR234730_scaffoldsgr 500.fasta
