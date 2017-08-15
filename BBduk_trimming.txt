@@ -1,0 +1,44 @@
+bbduk trimming
+bbduk.sh -Xmx10g in1=read1.fq in2=read2.fq out1=clean1.fq out2=clean2.fq ref=adapters.fa ktrim=r k=23 mink=11 hdist=1 tpe tbo qtrim=rl trimq=20 hdist=2
+=C1&A1&D1&B1&E1&F1&G1&H1&I1
+
+ ktrim=r k=21 mink=8 tpe tbo qtrim=rl trimq=20 hdist=1 overwrite=true
+
+bbduk.sh -Xmx10g in1=B-cereus-P1_S3_L001_R1_001.fastq.gz in2=B-cereus-P1_S3_L001_R2_001.fastq.gz out1=B_cereus_P1_S3_L001_R1_001_clean1.fq out2=B_cereus_P1_S3_L001_R2_001_clean2.fq ref=adapters.fa ktrim=r k=23 mink=11 hdist=1 tpe tbo qtrim=rl trimq=20 hdist=2
+bbduk.sh -Xmx10g in1=B-cereus-P2_S12_L001_R1_001.fastq.gz in2=B-cereus-P2_S12_L001_R2_001.fastq.gz out1=B_cereus_P2_S12_L001_R1_001_clean1.fq out2=B_cereus_P2_S12_L001_R2_001_clean2.fq ref=adapters.fa ktrim=r k=23 mink=11 hdist=1 tpe tbo qtrim=rl trimq=20 hdist=2
+
+bbduk.sh -Xmx10g in1=C-difficile-P1_S8_L001_R1_001.fastq.gz in2=C-difficile-P1_S8_L001_R2_001.fastq.gz out1=C_difficile_P1_S8_L001_R1_001_clean1.fq out2=C_difficile_P1_S8_L001_R2_001_clean2.fq ref=adapters.fa ktrim=r k=23 mink=11 hdist=1 tpe tbo qtrim=rl trimq=20 hdist=2
+bbduk.sh -Xmx10g in1=C-difficile-P2_S17_L001_R1_001.fastq.gz in2=C-difficile-P2_S17_L001_R2_001.fastq.gz out1=C_difficile_P2_S17_L001_R1_001_clean1.fq out2=C_difficile_P2_S17_L001_R2_001_clean2.fq ref=adapters.fa ktrim=r k=23 mink=11 hdist=1 tpe tbo qtrim=rl trimq=20 hdist=2
+
+bbduk.sh -Xmx10g in1=E-coli-P1_S1_L001_R1_001.fastq.gz in2=E-coli-P1_S1_L001_R2_001.fastq.gz out1=E_coli_P1_S1_L001_R1_001_clean1.fq out2=E_coli_P1_S1_L001_R2_001_clean2.fq ref=adapters.fa ktrim=r k=23 mink=11 hdist=1 tpe tbo qtrim=rl trimq=20 hdist=2
+bbduk.sh -Xmx10g in1=E-coli-P2_S10_L001_R1_001.fastq.gz in2=E-coli-P2_S10_L001_R2_001.fastq.gz out1=E_coli_P2_S10_L001_R1_001_clean1.fq out2=E_coli_P2_S10_L001_R2_001_clean2.fq ref=adapters.fa ktrim=r k=23 mink=11 hdist=1 tpe tbo qtrim=rl trimq=20 hdist=2
+
+bbduk.sh -Xmx10g in1=E-faecalis-P1_S6_L001_R1_001.fastq.gz in2=E-faecalis-P1_S6_L001_R2_001.fastq.gz out1=E_faecalis_P1_S6_L001_R1_001_clean1.fq out2=E_faecalis_P1_S6_L001_R2_001_clean2.fq ref=adapters.fa ktrim=r k=23 mink=11 hdist=1 tpe tbo qtrim=rl trimq=20 hdist=2
+bbduk.sh -Xmx10g in1=E-faecalis-P2_S15_L001_R1_001.fastq.gz in2=E-faecalis-P2_S15_L001_R2_001.fastq.gz out1=E_faecalis_P2_S15_L001_R1_001_clean1.fq out2=E_faecalis_P2_S15_L001_R2_001_clean2.fq ref=adapters.fa ktrim=r k=23 mink=11 hdist=1 tpe tbo qtrim=rl trimq=20 hdist=2
+
+bbduk.sh -Xmx10g in1=H-influenzae-P1_S4_L001_R1_001.fastq.gz in2=H-influenzae-P1_S4_L001_R2_001.fastq.gz out1=H_influenzae_P1_S4_L001_R1_001_clean1.fq out2=H_influenzae_P1_S4_L001_R2_001_clean2.fq ref=adapters.fa ktrim=r k=23 mink=11 hdist=1 tpe tbo qtrim=rl trimq=20 hdist=2
+bbduk.sh -Xmx10g in1=H-influenzae-P2_S13_L001_R1_001.fastq.gz in2=H-influenzae-P2_S13_L001_R2_001.fastq.gz out1=H_influenzae_P2_S13_L001_R1_001_clean1.fq out2=H_influenzae_P2_S13_L001_R2_001_clean2.fq ref=adapters.fa ktrim=r k=23 mink=11 hdist=1 tpe tbo qtrim=rl trimq=20 hdist=2
+
+bbduk.sh -Xmx10g in1=P-aeruginosa-P1_S2_L001_R1_001.fastq.gz in2=P_aeruginosa-P1_S2_L001_R2_001.fastq.gz out1=P_aeruginosa_P1_S2_L001_R1_001_clean1.fq out2=P_aeruginosa_P1_S2_L001_R2_001_clean2.fq ref=adapters.fa ktrim=r k=23 mink=11 hdist=1 tpe tbo qtrim=rl trimq=20 hdist=2
+bbduk.sh -Xmx10g in1=P-aeruginosa-P2_S11_L001_R1_001.fastq.gz in2=P_aeruginosa-P2_S11_L001_R2_001.fastq.gz out1=P_aeruginosa_P2_S11_L001_R1_001_clean1.fq out2=P_aeruginosa_P2_S11_L001_R2_001_clean2.fq ref=adapters.fa ktrim=r k=23 mink=11 hdist=1 tpe tbo qtrim=rl trimq=20 hdist=2
+
+bbduk.sh -Xmx10g in1=S-oralis-P1_S7_L001_R1_001.fastq.gz in2=S-oralis-P1_S7_L001_R2_001.fastq.gz out1=S_oralis_P1_S7_L001_R1_001_clean1.fq out2=S_oralis_P1_S7_L001_R2_001_clean2.fq ref=adapters.fa ktrim=r k=23 mink=11 hdist=1 tpe tbo qtrim=rl trimq=20 hdist=2
+bbduk.sh -Xmx10g in1=S-oralis-P2_S14_L001_R1_001.fastq.gz in2=S-oralis-P2_S14_L001_R2_001.fastq.gz out1=S_oralis_P2_S14_L001_R1_001_clean1.fq out2=S_oralis_P2_S14_L001_R2_001_clean2.fq ref=adapters.fa ktrim=r k=23 mink=11 hdist=1 tpe tbo qtrim=rl trimq=20 hdist=2
+
+/home/raju.misra/programs/BBMap/bbmap/bbduk.sh -Xmx10g in1=S-oralis-P1_S7_L001_R1_001.fastq.gz in2=S-oralis-P1_S7_L001_R2_001.fastq.gz out1=S_oralis_P1_S7_L001_R1_001_clean1.fq out2=S_oralis_P1_S7_L001_R2_001_clean2.fq ref=/home/raju.misra/programs/BBMap/bbmap/resources/adapters.fa ktrim=r k=23 mink=11 tpe tbo qtrim=rl trimq=20 hdist=2
+/home/raju.misra/programs/BBMap/bbmap/bbduk.sh -Xmx10g in1=S-oralis-P2_S14_L001_R1_001.fastq.gz in2=S-oralis-P2_S14_L001_R2_001.fastq.gz out1=S_oralis_P2_S14_L001_R1_001_clean1.fq out2=S_oralis_P2_S14_L001_R2_001_clean2.fq ref=/home/raju.misra/programs/BBMap/bbmap/resources/adapters.fa ktrim=r k=23 mink=11 tpe tbo qtrim=rl trimq=20 hdist=2
+
+bbduk.sh -Xmx10g in1=S-pyogenes-P1_S5_L001_R1_001.fastq.gz in2=S-pyogenes-P1_S5_L001_R2_001.fastq.gz out1=S_pyogenes_P1_S5_L001_R1_001_clean1.fq out2=S_pyogenes_P1_S5_L001_R2_001_clean2.fq ref=adapters.fa ktrim=r k=23 mink=11 hdist=1 tpe tbo qtrim=rl trimq=20 hdist=2
+bbduk.sh -Xmx10g in1=S-pyogenes-P2_S14_L001_R1_001.fastq.gz in2=S-pyogenes-P2_S14_L001_R2_001.fastq.gz out1=S_pyogenes_P2_S14_L001_R1_001_clean1.fq out2=S_pyogenes_P2_S14_L001_R2_001_clean2.fq ref=adapters.fa ktrim=r k=23 mink=11 hdist=1 tpe tbo qtrim=rl trimq=20 hdist=2
+
+/home/raju.misra/programs/BBMap/bbmap/bbduk.sh -Xmx10g in1=P-aeruginosa-P1_S2_L001_R1_001.fastq.gz in2=P-aeruginosa-P1_S2_L001_R2_001.fastq.gz out1=P_aeruginosa_P1_S2_L001_R1_001_clean1.fq out2=P_aeruginosa_P1_S2_L001_R2_001_clean2.fq ref=/home/raju.misra/programs/BBMap/bbmap/resources/adapters.fa ktrim=r k=23 mink=11 tpe tbo qtrim=rl trimq=20 hdist=2
+/home/raju.misra/programs/BBMap/bbmap/bbduk.sh -Xmx10g in1=P-aeruginosa-P2_S11_L001_R1_001.fastq.gz in2=P-aeruginosa-P2_S11_L001_R2_001.fastq.gz out1=P_aeruginosa_P2_S11_L001_R1_001_clean1.fq out2=P_aeruginosa_P2_S11_L001_R2_001_clean2.fq ref=/home/raju.misra/programs/BBMap/bbmap/resources/adapters.fa ktrim=r k=23 mink=11 tpe tbo qtrim=rl trimq=20 hdist=2
+/home/raju.misra/programs/BBMap/bbmap/bbduk.sh -Xmx10g in1=S-oralis-P1_S7_L001_R1_001.fastq.gz in2=S-oralis-P1-S7_L001_R2_001.fastq.gz out1=S_oralis_P1_S7_L001_R1_001_clean1.fq out2=S_oralis_P1_S7_L001_R2_001_clean2.fq ref=/home/raju.misra/programs/BBMap/bbmap/resources/adapters.fa ktrim=r k=23 mink=11 tpe tbo qtrim=rl trimq=20 hdist=2
+/home/raju.misra/programs/BBMap/bbmap/bbduk.sh -Xmx10g in1=S-oralis-P2_S14_L001_R1_001.fastq.gz in2=S-oralis-P2-S14_L001_R2_001.fastq.gz out1=S_oralis_P2_S14_L001_R1_001_clean1.fq out2=S_oralis_P2_S14_L001_R2_001_clean2.fq ref=/home/raju.misra/programs/BBMap/bbmap/resources/adapters.fa ktrim=r k=23 mink=11 tpe tbo qtrim=rl trimq=20 hdist=2
+
+
+
+bbduk.sh -Xmx10g in1=read1.fq in2=read2.fq out1=clean1.fq out2=clean2.fq ref=adapters.fa ktrim=r k=23 mink=11 hdist=1 tpe tbo qtrim=rl trimq=20 hdist=2
+bbduk.sh -Xmx10g in1=read1.fq in2=read2.fq out1=clean1.fq out2=clean2.fq ref=adapters.fa ktrim=r k=23 mink=11 hdist=1 tpe tbo qtrim=rl trimq=20 hdist=2
+bbduk.sh -Xmx10g in1=read1.fq in2=read2.fq out1=clean1.fq out2=clean2.fq ref=adapters.fa ktrim=r k=23 mink=11 hdist=1 tpe tbo qtrim=rl trimq=20 hdist=2
+bbduk.sh -Xmx10g in1=read1.fq in2=read2.fq out1=clean1.fq out2=clean2.fq ref=adapters.fa ktrim=r k=23 mink=11 hdist=1 tpe tbo qtrim=rl trimq=20 hdist=2

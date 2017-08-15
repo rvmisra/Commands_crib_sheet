@@ -1,0 +1,2 @@
+SnpEff  -no-downstream -no-upstream -no-utr -no-intergenic REFUSA300_2014C01 N315_GCF_000009645_1_ASM964v1_genomic_filtered_snps.OLD.vcf -stats XXXXXX.html > XXXXX.vcf
+where XXXXXX = output filenamee
